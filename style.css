@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 5%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #6b6b6b;
+}
+
+#buttonrow {
+
+    margin: 5%, 0;
+}
+
+img {
+    height: 90px;
+    width: 90px;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+
+#text {
+    max-width: 310px;
+}

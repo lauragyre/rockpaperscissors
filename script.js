@@ -1,3 +1,9 @@
+let rock = document.querySelector('#rock');
+let paper = document.querySelector('#paper');
+let scissors = document.querySelector('#scissors');
+let announce = document.querySelector('#announce');
+
+
 let computerPlay = function () {
     let computerPick = Math.floor(Math.random()*3);
     if (computerPick === 0) {
@@ -10,47 +16,47 @@ let computerPlay = function () {
     return computerPick;
 }
 
-let playerPlay = function() {
+/*let playerPlay = function() {
     let temp = window.prompt('Please enter rock, paper, or scissors!');
     return temp.toLowerCase();
-}
+} */
 
 let computerScore = 0;
 let playerScore = 0;
 
-let winner = function (computerSelection, playerSelection) {
-    console.log ('Computer played ' + computerSelection + ", you played " + playerSelection + ".")
-    if (computerSelection === playerSelection) {
-        return 'Tie! Try again.'
+let winner = function (computerPlay, playerSelection) {
+    announce.innerHTML = `Computer played ${computerPlay}, you played ${playerSelection}.`;
+    if (computerPlay === playerSelection) {
+        explain.innerHTML = 'Tie! Try again.'
     }
-    else if (computerSelection === 'rock') {
+    else if (computerPlay === 'rock') {
         if (playerSelection === 'paper') {
             playerScore ++;
-            return 'You win! Paper beats rock!'
+            explain.innerHTML = 'You win! Paper beats rock!'
         }
         else {
             computerScore ++;    
-            return 'Computer wins! Rock beats scissors!'
+            explain.innerHTML = 'Computer wins! Rock beats scissors!'
         }
     }
-    else if (computerSelection === 'paper') {
+    else if (computerPlay === 'paper') {
         if (playerSelection === 'scissors') {
             playerScore ++;
-            return 'You win! Scissors beat paper!';
+            explain.innerHTML = 'You win! Scissors beat paper!';
         }
         else {
             computerScore ++;
-            return 'Computer wins! Paper beats rock!';
+            explain.innerHTML = 'Computer wins! Paper beats rock!';
         }
     }
     else {
         if (playerSelection === 'rock') {
             playerScore ++;
-            return 'You win! Rock beats scissors!'
+            explain.innerHTML = 'You win! Rock beats scissors!'
         }
         else {
             computerScore ++;
-            return 'Computer wins! Scissors beat paper!'
+            explain.innerHTML = 'Computer wins! Scissors beat paper!'
         }
     }
 
@@ -58,7 +64,7 @@ let winner = function (computerSelection, playerSelection) {
 
 
 
-let game = function () {
+/* let game = function () {
     for (let i = 0; i < 5; i++) {
         console.log(winner(computerPlay(), playerPlay()));
     }
@@ -71,6 +77,21 @@ let game = function () {
     else {
         console.log('Five games played, but due to ties there is no clear tournament winner.');
     }
-}
+} */
 
-game();
+rock.addEventListener('click', ()=> {winner(computerPlay(), 'rock');});
+rock.addEventListener('click', () => {rock.style.opacity = "65%";
+paper.style.opacity = "100%"; scissors.style.opacity = "100%";
+});
+
+paper.addEventListener('click', ()=> {winner(computerPlay(), 'paper');});
+paper.addEventListener('click', () => {paper.style.opacity = "65%";
+rock.style.opacity = "100%"; scissors.style.opacity = "100%";
+});
+
+scissors.addEventListener('click', ()=> {winner(computerPlay(), 'scissors');});
+scissors.addEventListener('click', () => {scissors.style.opacity = "65%";
+paper.style.opacity = "100%"; rock.style.opacity = "100%";
+});
+//game();
+
